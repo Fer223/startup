@@ -1,0 +1,57 @@
+body > header {
+    width: 100%;
+    height: 200px;
+    background: blue;   
+    text-align: center;
+}
+body > footer {
+    width: 100%;
+    height: 100px;
+    background: red; 
+    clear: both; 
+    text-align: center;
+}
+
+aside {
+    background: black;
+    height: 300px;
+    width: 25%;
+    float: left;
+}
+nav {
+    background: green;
+    height: 300px;
+    width: 25%;
+    float: left;
+}
+section {
+    background: yellow;
+    height: 300px;
+    width: 50%;
+    float: left;
+}
+html {
+    font-size: 14px;
+    font-family: sans-serif;
+}
+
+/*.header {
+    font-size: 46px;   
+    background-color: magenta; 
+}
+.footer {
+    font-size: 10px;
+    background-color: magenta;
+}
+.content {
+    font-size: 14px;
+}   
+.navigation {
+    font-size: 12px;
+    background-color: blue;
+}
+.sidebar {
+    font-size: 10px;
+    color: white;
+    background-color: magenta;
+}*/
