@@ -1,0 +1,10 @@
+* {
+    text-align: center;
+}
+.hidden {
+    display: none;
+}
+section {
+    background-color: blue;
+    color: white;
+}
