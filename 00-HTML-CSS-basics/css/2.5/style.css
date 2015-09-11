@@ -1,0 +1,66 @@
+body {  
+     background:#e7e7e7;
+}
+
+header {
+    height: 100px;
+    background-color:#F2F1E9;
+    margin: 0;
+    text-align: center;
+    overflow: auto;
+    border-radius:10px;
+}
+
+h1 {
+    font-size: 40px;
+    font-family: Helvetica;
+}
+
+#box {  
+     width:600px;
+     height:400px;
+     margin:5% auto 0 auto; 
+     background-size:cover;
+     border-radius:10px;
+     overflow:hidden;
+     display: inline-block;
+     margin-left: 10%
+}
+
+#overlay {  
+         background:rgba(0,0,0,.75);
+         text-align:center;
+         padding:45px 0 66px 0;
+         opacity:0;
+         height: 100%;
+}
+
+#box:hover #overlay {
+                    opacity:1;
+}
+
+#plus {  
+      font-family:Helvetica;
+      font-weight:900;
+      color:rgba(255,255,255,.85);
+      font-size:12px;
+}
+
+ .img1 {
+    background: url(ff.jpg);
+ }
+
+ .img2 {
+    background: url(misfits.jpg);
+ }
+
+@media (max-width: 1000px) {
+        h1 {
+          font-size: 20px;
+        }
+
+        #box {
+            width: 300px;
+            height: 200px;
+        }
+}
