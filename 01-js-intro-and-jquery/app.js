@@ -1,5 +1,10 @@
 var onPageReady = function () {
     
+    var albumName;
+    var albumImg;
+    var albumUrl;
+    var albumContainer;
+
     $('.hidden').fadeIn(5000, function () {
         
         $('.alias').focus();
@@ -22,11 +27,11 @@ var onPageReady = function () {
             success: function (data) { 
                 
                 for (var i = 0; i < data.albums.items.length ; i++) {
-                    var albName = $('<p><b>Album</b>:'+data.albums.items[i].name+'</p>');
-                    var albImg = $('<img src="'+data.albums.items[i].images[0].url+'" />');
-                    var albUrl = $('<a href="'+data.albums.items[i].external_urls.spotify +'">In spotify</a>');
-                    var art = $('<article>').append(albName, albImg, albUrl);
-                    $('.articles-container').append(art);
+                    albumName = $('<p><b>Album</b>:'+data.albums.items[i].name+'</p>');
+                    albumImg = $('<img src="'+data.albums.items[i].images[0].url+'" />');
+                    albumUrl = $('<a href="'+data.albums.items[i].external_urls.spotify +'">In spotify</a>');
+                    albumContainer = $('<article>').append(albumName, albumImg, albumUrl);
+                    $('.articles-container').append(albumContainer);
                 };
             }
         });
