@@ -30,18 +30,18 @@ var Movie = (function () {
   return Movie;
 })();
 
-
-
 var DownloadableMovie = function () {
   Movie.call(this, title, year);
 
 };
 inheritPrototype(DownloadableMovie, Movie);
 
+DownloadableMovie.prototype.download = function () {
+  console.log('Dowloading ' + this.title);
+}
 
 
-var movie2 = new Movie('wep', 2010);
-movie2.play();
-movie2.stop();
-var movie1 = new Movie('hay hay ', 1993);
+var movie1 = new Movie('psicosis', 1959);
 movie1.play();
+var movie2 = new DownloadableMovie('Warrior', 2013);
+movie2.download();
