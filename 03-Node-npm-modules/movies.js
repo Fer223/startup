@@ -5,18 +5,19 @@ var Director = function (name, quotes) {
 }
 
 Director.prototype.speak = function () {
-    console.log(quotes);
-    alert(quotes);
+    console.log(this.quotes);
+    alert(this.quotes);
 }
 
 module.exports = Director;
 },{}],2:[function(require,module,exports){
-var movies = require('./movie.js');
+var Director = require('./director.js');
+var Movie = require('./movie.js');
 var director1 = new Director('Marin Scorsese', 'Courage is found in unlikely places.');
 var movie1 = new Movie('the departed', '2006', director1);
 
 movie1.directorQuotes();
-},{"./movie.js":3}],3:[function(require,module,exports){
+},{"./director.js":1,"./movie.js":3}],3:[function(require,module,exports){
 var director = require('./director.js')
 
 var Movie = function (title, year, director) {
@@ -39,11 +40,9 @@ Movie.prototype.getReview = function () {
   return 'Review -> Movie:' + this.title + '  ' + ' Year: ' + this.year + '   ' + this.review;
 };
 Movie.prototype.directorQuotes = function () {
-    console.log(director.speak());
+    this.director.speak();
 }
 
 module.exports = Movie;
   
-
-
 },{"./director.js":1}]},{},[2]);

@@ -20,9 +20,8 @@ Movie.prototype.getReview = function () {
   return 'Review -> Movie:' + this.title + '  ' + ' Year: ' + this.year + '   ' + this.review;
 };
 Movie.prototype.directorQuotes = function () {
-    console.log(director.speak());
+    this.director.speak();
 }
 
 module.exports = Movie;
   
-
