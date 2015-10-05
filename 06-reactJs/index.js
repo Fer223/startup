@@ -1,5 +1,6 @@
 var React = require('react');
 
-var Form = require('./components');
+var NewMovieForm = require('./components/new-movie-form');
 
-React.render(<Form />, document.getElementById('mount'));
+
+React.render(<NewMovieForm />, document.getElementById('mount'));

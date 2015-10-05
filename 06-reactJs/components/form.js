@@ -1,30 +1,48 @@
 var React = require('react');
-var _ = require('lodash');
 
-var Input = require('input')
-
-var FormGroup = React.createClass({
-
+var Form = React.createClass({
     getInitialState: function () {
-        inputText:'';
-    }
-
+        return({
+            title: '',
+            genre: '',
+            favorite: false
+        });
+    },
     render: function () {
-        <form>
-            <Input {...this.getInputProps()} />
-        </form>
-    }
+        return (
+            <form onSubmit={this.handleSubmit}>
+                <input type='text' placeholder='Title' refs='title' onChange={this.handleTitleChange} />
+                <input type='text' placeholder='Genre' refs='genre' onChange={this.handleGenreChange} />
+                <input type='checkbox' onClick={this.handleCheckboxChange}>Add to favorites </input>
+                <input type='submit' value='Post' />
+            </form>
+        );
+    },
 
-    getInputProps: function () {
-        return {
-            value: this.state.inputText,
-            onChange: this.handleInputChange()
+    handleTitleChange: function (event) {
+        this.setState({title: event.target.value});
+        var title = event.target.value;
+        console.log(title);
+    },
+
+    handleGenreChange: function (event) {
+        this.setState({genre: event.target.value});
+        var genre = event.target.value;
+        console.log(genre);
+    },
+
+    handleCheckboxChange: function (event) {
+        if (event.target.value) {
+            this.setState({favorite: true})
         }
-    }
+    },
 
-    handleInputChange: function (event) {
-        this.setState({event.target.value})
+    handleSubmit: function (event) {
+        event.preventDefault();
+        console.log(this.state.title);
+        console.log(this.state.genre);
+        this.props.onMovieSubmit({title: this.state.title, genre: this.state.genre, favorite: this.state.favorite});
     }
 });
 
-module.exports = FormGroup;
+module.exports = Form;
