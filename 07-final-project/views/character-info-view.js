@@ -1,11 +1,7 @@
-//VENDOR
 var React = require('react');
-var $ = require('jquery');
-//STORES
-var characterInfoStore = require('../stores/character-info-store');
-//ACTIONS
-var characterInfoStoreAction = require('../stores/character-info-store-actions');
-//COMPONENTS
+
+var serverResponseManager = require('../stores/server-response-manager');
+
 var Input = require('../components/input');
 var CharacterInfoList = require('../components/character-info-list');
 
@@ -15,27 +11,21 @@ var CharacterInfoView = React.createClass({
         return {
             name: '',
             realm: '',
-            serverData: characterInfoStore.getCharacterInfo()
+            serverData: ''
         }
     },
 
-    componentWillMount: function () {
-        characterInfoStore.addActionListener(characterInfoStoreAction.CHANGE_EVENT, this.updateList);
-    },
-
-    componentWillUnmount: function () {
-        characterInfoStore.removeActionListener(characterInfoStoreAction.CHANGE_EVENT, this.updateList);
-    },
-
     render: function () {
-
         return (
-            <form {...this.getFormProps()}>
-                <Input {...this.getNameInputProps()} />
-                <Input {...this.getRealmInputProps()} />
-                <button>Search</button>
-                <CharacterInfoList {...this.getCharacterInfoListProps()}/>
-            </form>
+            <div>
+                <h2>Character basic information</h2>
+                <form {...this.getFormProps()}>
+                    <Input {...this.getNameInputProps()} />
+                    <Input {...this.getRealmInputProps()} />
+                    <button>Search</button>
+                    <CharacterInfoList {...this.getCharacterInfoListProps()}/>
+                </form>
+            </div>
         );
     },
 
@@ -61,7 +51,15 @@ var CharacterInfoView = React.createClass({
 
     getCharacterInfoListProps: function () {
         return {
-            data: this.state.serverData
+            name: this.state.serverData.name,
+            realm: this.state.serverData.realm,
+            race: this.state.serverData.race,
+            class: this.state.serverData.class,
+            gender: this.state.serverData.gender,
+            battlegroup: this.state.serverData.battlegroup,
+            level: this.state.serverData.level,
+            achievementPoints: this.state.serverData.achievementPoints,
+            thumbnail: this.state.serverData.thumbnail
         }
     },
 
@@ -75,30 +73,18 @@ var CharacterInfoView = React.createClass({
 
     handleFormSubmit: function (event) {
         event.preventDefault();
-        this.getServerResponse(this.state.realm, this.state.name);
-        this.resetForm();
-    },
 
-    getServerResponse: function (realm, characterName) {
-        $.ajax({
-            url: 'https://us.api.battle.net/wow/character/'+realm+'/'+characterName+'?locale=en_US&apikey=mc4e8hbgbjhjvfuhzcs9w2gfknhdzzt7',
-            dataType: 'json',
-            success: function (data) {
-                characterInfoStore.setCharacterInfo(data);
-                console.log(data);
-            },
-            error: function(xhr, status, err) {
-                console.error(this.props.url, status, err.toString());
-            }
-        });
+        serverResponseManager.getCharacterInfo(this.state.realm, this.state.name, this.updateList);
+        this.resetForm();
     },
 
     resetForm: function () {
         this.setState({name: '', realm: ''});
     },
 
-    updateList: function () {
-        this.setState({serverData: characterInfoStore.getCharacterInfo()})
+    updateList: function (data) {
+        this.setState({serverData: data});
+        console.log(data);
     }
 });
 
