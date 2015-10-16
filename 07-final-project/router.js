@@ -9,6 +9,7 @@ module.exports = (function () {
     var CharacterInfoView = require('./views/character-info-view');
     var RealmsStateView = require('./views/realms-state-view');
     var RankingsView = require('./views/rankings-view');
+    var GuildInfoList = require('./views/guild-info-view');
 
     var ModuleRouter = function () {
         this.routes = (
@@ -17,6 +18,7 @@ module.exports = (function () {
                 <Route name="character" handler={CharacterInfoView} />
                 <Route name="realm" handler={RealmsStateView} />
                 <Route name="rankings" handler={RankingsView} />
+                <Route name="guild" handler={GuildInfoList} />
             </Route>
         );
     };

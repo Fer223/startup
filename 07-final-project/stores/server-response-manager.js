@@ -44,4 +44,17 @@ ServerResponseManager.prototype.getPvpLeaderboard = function (bracket, callback)
     });
 };
 
+ServerResponseManager.prototype.getGuildInfo = function (guildName, realm, callback) {
+    $.ajax({
+        url: 'https://us.api.battle.net/wow/guild/' + realm + '/' + guildName + '?fields=achievements%2Cchallenge&locale=en_US&apikey=mc4e8hbgbjhjvfuhzcs9w2gfknhdzzt7',
+        dataType: 'json',
+        success: function (data) {
+            callback(data);
+        },
+        error: function(xhr, status, err) {
+            console.error(this.url, status, err.toString());
+        }
+    });
+};
+
 module.exports = new ServerResponseManager();

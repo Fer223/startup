@@ -1,3 +1,4 @@
+//WORK IN PROGRES
 var React = require('react');
 
 var serverResponseManager = require('../stores/server-response-manager');
@@ -25,7 +26,7 @@ var RankingsView = React.createClass({
                             <option value="5v5">5 vs 5</option>
                             <option value="rgb">rgb</option>
                         </select>
-                        <RankingTable {...this.getRankingTableProps}/>
+                        <RankingTable {...this.getRankingTableProps()}/>
                     </div>
                     <div className="col-md-6">
                         <Input className="form-control" />
@@ -48,7 +49,8 @@ var RankingsView = React.createClass({
     },
 
     updatePvpLeaderboardData: function (data) {
-        this.setState({pvpLeaderboardData: data});
+        this.setState({pvpLeaderboardData: data.rows});
+        //console.log(this.state.pvpLeaderboardData)
     }
 });
 
