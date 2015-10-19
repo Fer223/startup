@@ -2,7 +2,7 @@ var React = require('react');
 
 var GuildInfoList = React.createClass({
 
-    /*propTypes: {
+    propTypes: {
         name: React.PropTypes.string,
         realm: React.PropTypes.string,
         race: React.PropTypes.string,
@@ -12,7 +12,7 @@ var GuildInfoList = React.createClass({
         lever: React.PropTypes.string,
         achievementPoints: React.PropTypes.string,
         thumbnail: React.PropTypes.string
-    },*/
+    },
 
     render: function () {
         return (

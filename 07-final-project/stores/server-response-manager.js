@@ -53,6 +53,7 @@ ServerResponseManager.prototype.getGuildInfo = function (guildName, realm, callb
         },
         error: function(xhr, status, err) {
             console.error(this.url, status, err.toString());
+            alert('The guild name or realm doesn t match');
         }
     });
 };

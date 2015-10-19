@@ -19,7 +19,6 @@ var MainView = React.createClass({
                             <li><Link to="home">Home</Link></li>
                             <li><Link to="character">Character</Link></li>
                             <li><Link to="realm">Realms</Link></li>
-                            <li><Link to="rankings">Rankings</Link></li>
                             <li><Link to="guild">Guild</Link></li>
                         </ul>
                     </div>
